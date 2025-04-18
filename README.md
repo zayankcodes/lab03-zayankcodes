@@ -1,1 +1,2 @@
-# STARTER-lab02
+# STARTER-lab03
+# Implementing a BST
