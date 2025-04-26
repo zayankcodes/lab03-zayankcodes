@@ -44,7 +44,7 @@ void IntBST::printPreOrder()  const { printPreOrder(root); }
 void IntBST::printInOrder()   const { printInOrder(root);  }
 void IntBST::printPostOrder() const { printPostOrder(root); }
 
-/*-------------- private recursive helpers --------------------------*/
+
 void IntBST::printPreOrder(Node* n) const {
     if (!n) return;
     cout << n->info;
@@ -66,7 +66,7 @@ void IntBST::printPostOrder(Node* n) const {
     printPostOrder(n->left);
     printPostOrder(n->right);
     cout << n->info;
-    if (n != root) cout << ' ';        // root is printed last
+    if (n != root) cout << ' ';        
 }
 
 int IntBST::sum(Node* n) const {
