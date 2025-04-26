@@ -40,18 +40,15 @@ bool IntBST::insert(int value, Node* n) {
 }
 
 
-
-
-void IntBST::printPreOrder() const { printPreOrder(root); }
-void IntBST::printInOrder()  const { printInOrder(root);  }
+void IntBST::printPreOrder()  const { printPreOrder(root); }
+void IntBST::printInOrder()   const { printInOrder(root);  }
 void IntBST::printPostOrder() const { printPostOrder(root); }
 
-
-
+/*-------------- private recursive helpers --------------------------*/
 void IntBST::printPreOrder(Node* n) const {
     if (!n) return;
     cout << n->info;
-    if (getSuccessor(n->info) != 0) cout << ' ';
+    if (getSuccessorNode(n->info) != nullptr) cout << ' ';
     printPreOrder(n->left);
     printPreOrder(n->right);
 }
@@ -60,7 +57,7 @@ void IntBST::printInOrder(Node* n) const {
     if (!n) return;
     printInOrder(n->left);
     cout << n->info;
-    if (getSuccessor(n->info) != 0) cout << ' ';
+    if (getSuccessorNode(n->info) != nullptr) cout << ' ';
     printInOrder(n->right);
 }
 
@@ -69,8 +66,9 @@ void IntBST::printPostOrder(Node* n) const {
     printPostOrder(n->left);
     printPostOrder(n->right);
     cout << n->info;
-    if (n != root) cout << ' ';
+    if (n != root) cout << ' ';        // root is printed last
 }
+
 int IntBST::sum(Node* n) const {
     if (!n) return 0;
     return n->info + sum(n->left) + sum(n->right);
