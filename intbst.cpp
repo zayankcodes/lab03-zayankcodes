@@ -39,26 +39,23 @@ bool IntBST::insert(int value, Node* n) {
     }
 }
 
-void IntBST::printPreOrder(Node* n) const {
-    if (!n) return;
-    cout << n->info << ' ';
-    printPreOrder(n->left);
-    printPreOrder(n->right);
+
+
+void IntBST::printPreOrder() const {
+    bool first = true;
+    prePrint(root, first);        
 }
 
-void IntBST::printInOrder(Node* n) const {
-    if (!n) return;
-    printInOrder(n->left);
-    cout << n->info << ' ';
-    printInOrder(n->right);
+void IntBST::printInOrder() const {
+    bool first = true;
+    inPrint(root, first);
 }
 
-void IntBST::printPostOrder(Node* n) const {
-    if (!n) return;
-    printPostOrder(n->left);
-    printPostOrder(n->right);
-    cout << n->info << ' ';
+void IntBST::printPostOrder() const {
+    bool first = true;
+    postPrint(root, first);
 }
+
 
 void IntBST::printPreOrder() const  { printPreOrder(root);  cout << endl; }
 void IntBST::printInOrder()  const  { printInOrder(root);   cout << endl; }
