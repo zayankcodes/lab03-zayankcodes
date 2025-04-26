@@ -41,26 +41,36 @@ bool IntBST::insert(int value, Node* n) {
 
 
 
-void IntBST::printPreOrder() const {
-    bool first = true;
-    prePrint(root, first);        
+
+void IntBST::printPreOrder() const { printPreOrder(root); }
+void IntBST::printInOrder()  const { printInOrder(root);  }
+void IntBST::printPostOrder() const { printPostOrder(root); }
+
+
+
+void IntBST::printPreOrder(Node* n) const {
+    if (!n) return;
+    cout << n->info;
+    if (getSuccessor(n->info) != 0) cout << ' ';
+    printPreOrder(n->left);
+    printPreOrder(n->right);
 }
 
-void IntBST::printInOrder() const {
-    bool first = true;
-    inPrint(root, first);
+void IntBST::printInOrder(Node* n) const {
+    if (!n) return;
+    printInOrder(n->left);
+    cout << n->info;
+    if (getSuccessor(n->info) != 0) cout << ' ';
+    printInOrder(n->right);
 }
 
-void IntBST::printPostOrder() const {
-    bool first = true;
-    postPrint(root, first);
+void IntBST::printPostOrder(Node* n) const {
+    if (!n) return;
+    printPostOrder(n->left);
+    printPostOrder(n->right);
+    cout << n->info;
+    if (n != root) cout << ' ';
 }
-
-
-void IntBST::printPreOrder() const  { printPreOrder(root);  cout << endl; }
-void IntBST::printInOrder()  const  { printInOrder(root);   cout << endl; }
-void IntBST::printPostOrder() const { printPostOrder(root); cout << endl; }
-
 int IntBST::sum(Node* n) const {
     if (!n) return 0;
     return n->info + sum(n->left) + sum(n->right);
